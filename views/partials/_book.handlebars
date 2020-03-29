@@ -1,0 +1,42 @@
+<section id="book">
+    <div class="container">
+        <form action="/booking" method="post">
+
+            <label for="name">Name</label>
+            <div class="grid-2">
+                <input type="text" name="firstname" placeholder="Firstname" required>
+
+            </div>
+            <div class="grid-2">
+
+                <input type="text" name="lastname" placeholder="Lastname">
+            </div>
+            <label for="email">Email</label>
+            <div class="grid-2">
+                <input type="email" name="email" placeholder="Enter Email" required>
+            </div>
+            <label for="contact">Contact</label>
+            <div class="grid-2">
+                <input type="tel" name="contact" placeholder="Enter Telephone number" required>
+            </div>
+            <label for="work">What would you like us to do for you?</label>
+
+            <div class="grid-2 my-1">
+                <select name="work" id="work" class="text-grey" required>
+                    <option value="" placeholder="Select" class="hide"></option>
+                    <option value="graphic design">Graphic Design</option>
+                    <option value="web development">Web Development</option>
+                    <option value="photography">Photography</option>
+                </select>
+            </div>
+            <label for="expectations">What do you expect from us?</label>
+            <div class="grid-2 my-1">
+                <textarea name="expectations" id="" cols="20" rows="10" placeholder="Your Expections?"></textarea>
+            </div>
+
+            <div class="grid-2">
+                <input type="submit" class="btn btn-block " style="background: red;color:#fff" value="Talk to us">
+            </div>
+        </form>
+    </div>
+</section>
