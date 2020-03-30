@@ -8,11 +8,11 @@ const app = express();
 // keys
 const { mongoURI } = require("./config/keys");
 
-// // models
-// require("./models/Booking");
+// models
+require("./models/Booking");
 
-// // schema
-// const Booking = mongoose.model("booking");
+// schema
+const Booking = mongoose.model("booking");
 
 // use public
 app.use(express.static(path.join(__dirname, "public")));
@@ -24,25 +24,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // connect to DB
+mongoose
+    .connect(mongoURI, { useUnifiedTopology: "true", useNewUrlParser: "true" })
+    .then(() => {
+        console.log("MongoDB connected");
+    })
+    .catch(err => console.log(`mongoDB not connected because ${err}`));
 
-// mongoose
-//     .connect(mongoURI, { useUnifiedTopology: "true", useNewUrlParser: "true" })
-//     .then(() => {
-//         console.log("MongoDB connected");
-//     })
-//     .catch(err => console.log(`mongoDB not connected because ${err.name}`));
+const port = 4000 || process.env.port;
 
-const port = 4000;
-
+// home page
 app.get("/", (req, res) => {
     res.render("index");
 });
+// about page
 app.get("/about", (req, res) => {
     res.render("about");
 });
+// services..
+app.get("/services", (req, res) => {
+    res.render("services");
+});
+// booking page
 app.get("/book", (req, res) => {
     res.render("booking");
 });
+// booking post
 app.post("/booking", (req, res) => {
     const { firstname, lastname, email, contact, work, expectations } = req.body;
 
@@ -59,10 +66,19 @@ app.post("/booking", (req, res) => {
         .save()
         .then(booking => {
             console.log(booking);
+            res.redirect("/");
         })
         .catch(err => {
             console.log(err.name);
         });
+});
+
+// admin
+
+app.get("/admin", (req, res) => {
+    Booking.find({}).then(book => {
+        res.render("admin", book);
+    });
 });
 
 app.listen(port, () => {

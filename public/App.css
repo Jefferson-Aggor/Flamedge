@@ -821,6 +821,30 @@ table th {
 }
 
 
+/* services page styling */
+
+#services-showcase {
+    position: relative;
+    background: #111;
+    width: 100%;
+}
+
+#services-showcase:before {
+    content: "";
+    background: url("/img/feature-image.jpg") no-repeat center/cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0px;
+    opacity: 0.4;
+}
+
+#services-showcase .services-showcase-container {
+    height: 55vh;
+}
+
+
 /* booking styling */
 
 #book-showcase {
@@ -922,5 +946,10 @@ table th {
     #our-work::before {
         font-size: 3rem;
         margin-bottom: 1.5rem;
+    }
+    .content {
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
     }
 }
