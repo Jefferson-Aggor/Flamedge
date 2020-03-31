@@ -76,7 +76,7 @@ app.post("/booking", (req, res) => {
 // admin
 
 app.get("/admin", (req, res) => {
-    Booking.find({}).then(book => {
+    Booking.find().then(book => {
         res.render("admin", book);
     });
 });
