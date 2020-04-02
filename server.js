@@ -32,7 +32,7 @@ mongoose
     .catch(err => console.log(`mongoDB not connected because ${err}`));
 
 // home page
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
     res.render("index");
 });
 // about page
@@ -77,15 +77,14 @@ app.post("/booking", (req, res) => {
 
 // admin
 
-app.get("/admin", (req, res) => {
-    Booking.find({})
-        .lean()
-        .sort({ _id: 1 })
-        .then(book => {
-            res.render("admin", { book });
-            console.log(book);
-        });
-});
+// app.get("/admin", (req, res) => {
+//     Booking.find({})
+//         .lean()
+//         .sort({ _id: -1 })
+//         .then(book => {
+//             res.render("admin", { book });
+//         });
+// });
 
 const PORT = 4000 || process.env.PORT;
 
