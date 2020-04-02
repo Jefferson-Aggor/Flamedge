@@ -45,6 +45,10 @@ app.get("/about", (req, res) => {
 app.get("/services", (req, res) => {
     res.render("services");
 });
+// contact us page
+app.get("/contact", (req, res) => {
+    res.render("contact");
+});
 // booking page
 app.get("/book", (req, res) => {
     res.render("booking");
@@ -76,9 +80,12 @@ app.post("/booking", (req, res) => {
 // admin
 
 app.get("/admin", (req, res) => {
-    Booking.find().then(book => {
-        res.render("admin", book);
-    });
+    Booking.find({})
+        .lean()
+        .sort({ _id: -1 })
+        .then(book => {
+            res.render("admin", { book });
+        });
 });
 
 app.listen(port, () => {

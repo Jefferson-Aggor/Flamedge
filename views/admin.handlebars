@@ -9,13 +9,14 @@
 
 <body>
     {{#each book}}
-    {{#if book}}
-    {{firstname}}
-    {{else}}
-    no book
-    {{/if}}
-
-
+    <div class="bg-light">
+        <p>{{firstname}},{{lastname}}</p>
+        {{email}}
+        {{contact}}
+        {{work}}
+        {{expectations}}
+        {{date}}
+    </div>
     {{/each}}
 </body>
 

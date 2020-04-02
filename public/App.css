@@ -69,6 +69,10 @@ img {
 
 /* Text Styles*/
 
+.uppercase {
+    text-transform: uppercase;
+}
+
 .x-large {
     font-size: 4rem;
     line-height: 1.2;
