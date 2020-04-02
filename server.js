@@ -31,6 +31,8 @@ mongoose
     })
     .catch(err => console.log(`mongoDB not connected because ${err}`));
 
+const PORT = 4000 || process.env.PORT;
+
 // home page
 app.get("/", (req, res) => {
     res.render("index");
@@ -80,13 +82,13 @@ app.post("/booking", (req, res) => {
 app.get("/admin", (req, res) => {
     Booking.find({})
         .lean()
-        .sort({ _id: -1 })
+        .sort({ _id: 1 })
         .then(book => {
             res.render("admin", { book });
+            console.log(book);
         });
 });
 
-const port = process.env.port || 4000;
-app.listen(port, () => {
-    console.log(`server running on port ${port}`);
+app.listen(PORT, () => {
+    console.log(`server running on port ${PORT}`);
 });
