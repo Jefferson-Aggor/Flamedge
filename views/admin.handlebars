@@ -4,20 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FLAMEDGE | Adminstration</title>
 </head>
 
 <body>
-    {{#each book}}
-    <div class="bg-light">
-        <p>{{firstname}},{{lastname}}</p>
-        {{email}}
-        {{contact}}
-        {{work}}
-        {{expectations}}
-        {{date}}
+
+    {{> _admin-showcase}}
+    <div class="container">
+        <div class="my-2">
+            <div class="grid-3">
+                {{#each book}}
+                <div class="my-1 p-1  card hoverable-sm">
+                    <div class="name-date">
+
+
+                        <p class="uppercase"><i class="fas fa-user"></i>
+                            <strong style="font-weight: 600;color:red">{{firstname}} {{lastname}}</strong>
+                        </p>
+                        <div class="divider"></div>
+                        <p>Book Date : {{formatDate date 'Do MMMM  YYYY, h:mm:a'}}</p>
+                    </div>
+                    <div class="details">
+                        <p><i class="fas fa-phone"></i> <a href="tel:{{contact}}">{{contact}}</a></p>
+                        <p><i class="fas fa-envelope"> <a href="mailto:{{email}}">{{email}} </a></i></p>
+                    </div>
+                    <div class="work">
+                        <p class="my uppercase">Work Type: <strong>{{work}}</strong> </p>
+                        <p> Expectations: <br> {{expectations}}</p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
     </div>
-    {{/each}}
 </body>
 
 </html>

@@ -16,8 +16,18 @@ const Booking = mongoose.model("booking");
 
 // use public
 app.use(express.static(path.join(__dirname, "public")));
+
+const { formatDate } = require("./helpers/hbs");
+
 // handlebars middleware
-app.engine("handlebars", exphbs());
+app.engine(
+    "handlebars",
+    exphbs({
+        helpers: {
+            formatDate
+        }
+    })
+);
 app.set("view engine", "handlebars");
 // body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -67,7 +77,8 @@ app.post("/booking", (req, res) => {
     new Booking(newBooking)
         .save()
         .then(booking => {
-            console.log(booking);
+            arr.push(booking);
+            console.log(arr);
             res.redirect("/");
         })
         .catch(err => {
