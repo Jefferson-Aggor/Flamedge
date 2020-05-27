@@ -77,12 +77,11 @@ app.post("/booking", (req, res) => {
     new Booking(newBooking)
         .save()
         .then(booking => {
-            arr.push(booking);
-            console.log(arr);
+            console.log(booking);
             res.redirect("/");
         })
         .catch(err => {
-            console.log(err.name);
+            console.log(err);
         });
 });
 
@@ -97,8 +96,8 @@ app.get("/admin", (req, res) => {
         });
 });
 
-const PORT = 4000 || process.env.PORT;
+const Port = process.env.PORT || 4000; 
 
-app.listen(PORT, () => {
-    console.log(`server running on port ${PORT}`);
+app.listen(Port, () => {
+    console.log(`server running on port ${Port}`);
 });
