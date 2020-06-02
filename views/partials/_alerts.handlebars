@@ -1,0 +1,14 @@
+{{#if success_msg}}
+<div class="alert bg-success">{{success_msg}}</div>
+{{/if}}
+
+{{#if error_msg}}
+<div class="alert bg-danger">{{error_msg}}</div>
+{{/if}}
+
+<script>
+    const alerts = document.querySelectorAll('.alert')
+    alerts.forEach(alert => {
+        alert.remove()
+    }, 4000)
+</script>
